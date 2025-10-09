@@ -1,0 +1,56 @@
+﻿Entité;Attribut;Type;Longueur;Clé;Description
+CLIENT;NumClient;INT;-;PK;Identifiant unique du client (obligatoire)
+CLIENT;Nom;VARCHAR;50;-;Nom du client (obligatoire)
+CLIENT;Prenom;VARCHAR;50;-;Prénom du client (obligatoire)
+CLIENT;Email;VARCHAR;100;Unique;Email du client (unique)
+CLIENT;Telephone;VARCHAR;15;-;Téléphone (optionnel)
+CLIENT;Adresse;VARCHAR;150;-;Adresse postale (optionnel)
+CLIENT;DateInscription;DATE;-;-;Date d'inscription du client (historique RG1)
+VILLE;NumVille;INT;-;PK;Identifiant unique de la ville
+VILLE;NomVille;VARCHAR;80;Unique;Nom de la ville (unique, RG3)
+VILLE;Pays;VARCHAR;50;-;Pays de la ville
+HOTEL;NumHotel;INT;-;PK;Identifiant unique de l'hôtel
+HOTEL;NomHotel;VARCHAR;80;-;Nom de l'hôtel
+HOTEL;Adresse;VARCHAR;120;-;Adresse de l'hôtel
+HOTEL;NumVille;INT;-;FK (Unique);Ville de l'hôtel (1 hôtel par ville, RG2)
+HOTEL;Categorie;VARCHAR;20;-;Classement de l'hôtel (étoiles)
+HOTEL;TelephoneHotel;VARCHAR;15;-;Téléphone de l'hôtel
+CIRCUIT;NumCircuit;INT;-;PK;Identifiant unique du circuit
+CIRCUIT;NomCircuit;VARCHAR;80;-;Nom du circuit
+CIRCUIT;Description;VARCHAR;255;-;Description courte (optionnel)
+CIRCUIT;PrixIndicatif;DECIMAL(8,2);-;-;Prix catalogue indicatif (optionnel)
+CIRCUIT;DureeJours;INT;-;-;Durée totale en jours (optionnel)
+ETAPE_CIRCUIT;NumCircuit;INT;-;FK, PK(1);Circuit concerné
+ETAPE_CIRCUIT;OrdreEtape;INT;-;PK(2);Ordre de l'étape (1,2,3,...)
+ETAPE_CIRCUIT;NumVille;INT;-;FK;Ville visitée à cette étape
+ETAPE_CIRCUIT;NumHotel;INT;-;FK;Hôtel utilisé pour la(les) nuit(s) (RG5)
+ETAPE_CIRCUIT;NbNuits;INT;-;-;Nombre de nuits sur cette étape (>=1, RG5)
+ETAPE_CIRCUIT;TransportType;VARCHAR;30;-;Type de transport (avion, car, train...)
+ETAPE_CIRCUIT;TransportRef;VARCHAR;50;-;Référence transport (ex: vol AF415)
+ACCOMPAGNATEUR;NumAccompagnateur;INT;-;PK;Identifiant unique de l'accompagnateur
+ACCOMPAGNATEUR;Nom;VARCHAR;50;-;Nom de l'accompagnateur
+ACCOMPAGNATEUR;Prenom;VARCHAR;50;-;Prénom de l'accompagnateur
+ACCOMPAGNATEUR;Email;VARCHAR;100;-;Email (optionnel)
+VOYAGE;NumVoyage;INT;-;PK;Identifiant unique du voyage
+VOYAGE;NumCircuit;INT;-;FK;Circuit planifié pour ce voyage
+VOYAGE;NumAccompagnateur;INT;-;FK;Accompagnateur du voyage (RG4)
+VOYAGE;DateDepart;DATE;-;-;Date de départ du voyage
+VOYAGE;DateArrivee;DATE;-;-;Date d'arrivée du voyage
+VOYAGE;VilleDepart;INT;-;FK;Ville de départ (doit correspondre à l'étape 1)
+VOYAGE;VilleArrivee;INT;-;FK;Ville d'arrivée (dernière étape)
+VOYAGE;DateLimiteVersement2;DATE;-;-;D1 : limite paiement du solde (RG13)
+VOYAGE;DateLimiteConfirmation;DATE;-;-;D2 : décision maintien/annulation (RG14)
+VOYAGE;CapacitePlaces;INT;-;-;Nombre total de places disponibles
+VOYAGE;PrixParPlace;DECIMAL(8,2);-;-;Prix par place
+RESERVATION;NumReservation;INT;-;PK;Identifiant unique de la réservation
+RESERVATION;NumClient;INT;-;FK;Client qui réserve (RG1)
+RESERVATION;NumVoyage;INT;-;FK;Voyage réservé
+RESERVATION;PlacesReservees;INT;-;-;Nombre de places réservées (>=1)
+RESERVATION;Statut;VARCHAR;20;-;EnAttente / Definitive / Annulee
+RESERVATION;MontantAcompte;DECIMAL(8,2);-;-;Montant du premier versement (RG11)
+RESERVATION;DateAcompte;DATE;-;-;Date de réception de l'acompte
+RESERVATION;MontantSolde;DECIMAL(8,2);-;-;Montant du second versement (RG12)
+RESERVATION;DateSolde;DATE;-;-;Date de réception du solde
+RESERVATION;DateReservation;DATE;-;-;Date de la réservation
+RESERVATION;ModePaiement;VARCHAR;20;-;CB / Virement / Chèque...
+RESERVATION;ReferencePaiement;VARCHAR;50;-;Référence transaction bancaire
