@@ -1,4 +1,4 @@
-# dictionnaire_epure_etape2_simple.py
+# dictionnaire_epure_etape2.py
 import pandas as pd
 
 # ===== Données : Dictionnaire de données ÉPURÉ (Étape 2) =====
@@ -78,8 +78,9 @@ rows = [
 # Création DataFrame
 df = pd.DataFrame(rows, columns=["Entité", "Attribut", "Type", "Longueur", "Clé", "Description"])
 
-# Sauvegarde simple en CSV (compatible Excel FR)
+# Sauvegarde simple en CSV 
 file_path = "C:/Users/idris/Documents/Dictionnaire_donnees_Epure.csv"
 df.to_csv(file_path, index=False, sep=";", encoding="utf-8-sig")
 
-print(f"✅ CSV créé : {file_path}")
+print(f" CSV créé : {file_path}")
+
