@@ -69,8 +69,9 @@ data = [
 # Création du DataFrame
 df = pd.DataFrame(data, columns=["Entité", "Attribut", "Type", "Longueur", "Clé", "Description"])
 
-# Sauvegarde en Excel (mets ton chemin correct sous Windows)
+# Sauvegarde en Excel
 file_path = "C:/Users/idris/Dictionnaire_donnees_Complet.xlsx"
 df.to_excel(file_path, index=False)
 
-print(f"✅ Fichier généré : {file_path}")
+print(f" Fichier généré : {file_path}")
+
